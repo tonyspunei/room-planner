@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+  <title>Document</title>
+</head>
+<body>
+
+  <header>
+    <h1>Raumplaner</h1>
+  </header>
+
+  <main>
+    <aside class="raum-masse">
+      <div>
+        <h2>Raum Maße</h2>
+        <form class="dauerhafte-werte">
+          <div>
+            <label for="breite">Breite <span>(meter)</span></label>
+            <input class="mess-wert" type="number" max="24" required id="breite" name="raum_breite" value="1.5m">
+          </div>
+          <div>
+            <label for="hoehe">Höhe <span>(meter)</span></label>
+            <input class="mess-wert" type="number" max="18" required id="hoehe" name="raum_hoehe" value="2m">
+          </div>
+          <input type="submit" id="apply" value="Anwenden">
+        </form>
+      </div>
+    </aside>
+
+    <section id="raum-bearbeitung">
+      <div id="resizeMe" draggable="true">
+        <div class="resizable">
+          <p id="raum-width">10m</p>
+          <p id="raum-height">10m</p>
+        </div>
+      </div>
+    </section>
+
+    <aside class="raum-elemente">
+      <h2>Boden Texture</h2>
+      <div class="boden-texture">
+        <label for="textur">Textur</label>
+        <select name="textures" id="textur">
+          <option value="white">Weiß</option>
+          <option value="black">Schwarz</option>
+          <option value="holz">Holz</option>
+          <option value="marmor">Marmor</option>
+        </select>
+      </div>
+
+      <h2>Möbel Stücke</h2>
+      <div id="imagesBar" class="moebel-stuecke">
+        <img src="./imgs/dlf.pt-bed-top-view-png-5796898.png" draggable="true" alt="">
+        <img src="./imgs/pngwing.com.png" draggable="true" alt="">
+      </div>
+    </aside>
+
+  </main>
+
+</body>
+</html>
