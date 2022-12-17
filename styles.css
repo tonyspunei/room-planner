@@ -44,20 +44,32 @@ main {
 }
 
 .dauerhafte-werte {
+  margin-bottom: 5rem;
   display: flex;
+}
+
+.variable-werte {
+  display: none;
+}
+
+.dauerhafte-werte, 
+.variable-werte {
   flex-direction: column;
 }
 
-.dauerhafte-werte label {
+.dauerhafte-werte label, 
+.variable-werte label {
   font-size: 20px;
   font-weight: 600;
   margin-right: 20px;
 }
-.dauerhafte-werte label span {
+.dauerhafte-werte label span, 
+.variable-werte label span {
   font-size: 14px;
 }
 
-.dauerhafte-werte input {
+.dauerhafte-werte input, 
+.variable-werte input {
   padding: 10px 20px;
 }
 #apply {
@@ -135,6 +147,8 @@ main {
   position: absolute;
   height: 200px;
   z-index: 100;
+  resize: both;
+  overflow: auto;
 }
 
 /* Resizeable */
@@ -143,20 +157,28 @@ main {
   top: 8%;
   left: 8%;
   overflow:hidden;
-  resize:both;
+  resize: both;
   padding: 1.5rem;
   min-height: 20px;
   height: 300px;
   width: 300px;
 }
-#raum-width {
+
+.raum-width,
+.raum-height {
+  display: none;
+}
+
+.inside .raum-width {
+  display: block;
   position: absolute;
   top: 0px;
   left: 50%;
   transform: translateX(-50%);
   color: red;
 }
-#raum-height {
+.inside .raum-height {
+  display: block;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -165,9 +187,39 @@ main {
   transform: rotate(-90deg);
 }
 
+.resize-image .raum-width {
+  top: 0.75rem;
+}
+.resize-image .raum-height {
+  left: -0.2rem;
+}
+
+.resize-image.inside {
+  position: absolute;
+}
+
+.resize-image {
+  overflow: hidden;
+  height: auto;
+  width: 300px;
+  resize: both;
+  object-fit: cover;
+  z-index: 10;
+  padding: 1rem;
+}
+.resize-image img {
+  height: 100%;
+  width: 100%;
+}
+
 .resizable {
   border: 4px dashed black;
   background: white;
   width:100%;
   height:100%;
+}
+
+.current {
+  border: 3px dotted red;
+  border-radius: 2rem;
 }
