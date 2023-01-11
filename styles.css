@@ -129,8 +129,11 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: scroll;
 }
-.moebel-stuecke img {
+
+.moebel-stuecke .resize-image {
+  overflow: unset;
   height: 12rem;
   width: 12rem;
   object-fit: contain;
