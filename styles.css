@@ -165,8 +165,18 @@ main {
 }
 
 .raum-width,
-.raum-height {
+.raum-height,
+.rotate-icon {
   display: none;
+}
+
+.current > .rotate-icon {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -120px;
+  height: 30px;
+  cursor: pointer;
 }
 
 .inside .raum-width {
@@ -196,13 +206,13 @@ main {
 
 .resize-image.inside {
   position: absolute;
+  resize: both;
 }
 
 .resize-image {
   overflow: hidden;
   height: auto;
   width: 300px;
-  resize: both;
   object-fit: cover;
   z-index: 10;
   padding: 1rem;

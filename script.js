@@ -140,22 +140,34 @@ function handleKeyMovent(event) {
 function selectedItem() {
   const parent = imagesCanvasElement;
   const children = parent.children;
-  const allCurrentItems = document.querySelectorAll(".current");
+  // Möble Maße Inputs
+  const variableWerte = document.querySelector(".variable-werte")
+  const moebleBreite = document.querySelector("#moeble-breite");
+  const moebleHoehe = document.querySelector("#moeble-hoehe");
+  const rotateIcon = document.querySelector(".rotate-icon");
+  let rotation = 0;
+  const angle = 45;
 
-  // Reset
-  for(let item of allCurrentItems) {
-    if(item.classList.contains("current")) {
-      item.classList.remove("current");
-    }
+  function rotateElement() {
+    rotation = (rotation + angle) % 360;
+    currentItem.style.transform = `rotate(${rotation}deg)`;
   }
+
   moebelWerte.style.display = "none";
   currentItem = null;
   window.removeEventListener("keydown", handleKeyMovent);
+  window.removeEventListener("click", rotateElement);
 
   [...children].forEach(child => {
     child.addEventListener("click", () => {
+      // Reset
+      for(let item of [...children]) {
+        if(item.classList.contains("current")) {
+          item.classList.remove("current");
+        }
+      }
+
       currentItem = null;
-      selectedItem();
       if(!child.classList.contains("resizeMe")) {
         currentItem = child;
         child.classList.add("current");
@@ -165,6 +177,22 @@ function selectedItem() {
 
         if(currentItem) {
           moebelWerte.style.display = "flex";
+
+          rotateIcon.addEventListener("click", rotateElement)
+
+          variableWerte.addEventListener("submit", (e) => {
+            e.preventDefault();
+            currentItem.firstElementChild.nextElementSibling.innerHTML = `${(Number(moebleBreite.value)).toFixed(1)}m`;
+            currentItem.lastElementChild.innerHTML = `${(Number(moebleHoehe.value)).toFixed(1)}m`;
+
+            // Change width & height
+            currentItem.style.width = `${Number(moebleBreite.value) * 50}px`;
+            currentItem.style.height = `${Number(moebleHoehe.value) * 50}px`;
+
+            // Reset Input Fields
+            moebleBreite.value = "";
+            moebleHoehe.value = "";
+          });
         }
       }
     })
